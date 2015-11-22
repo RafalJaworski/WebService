@@ -8,36 +8,40 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
-
 import java.util.List;
 
 import butterknife.Bind;
 
 public class contactAdapter extends RecyclerView.Adapter<contactAdapter.CityViewHolder>{
 
-    private List<String> dane;
+    private List<Contact> dane;
     private LayoutInflater inflater;
 
-    public contactAdapter(Context context, List<String> dane) {
+    public contactAdapter(Context context, List<Contact> dane) {
         this.dane = dane;
         this.inflater = (LayoutInflater) context.getSystemService(context.LAYOUT_INFLATER_SERVICE);
     }
 
     @Override
     public CityViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        return null;
+        View view = inflater.inflate(R.layout.list_item_contact,null);
+        return new CityViewHolder(view);
+
     }
 
 
     @Override
     public void onBindViewHolder(CityViewHolder holder, int position) {
+        Contact item = dane.get(position);
 
+        holder.imienazwisko.setText(String.format("%s %s",item.getImie(),item.getNazwisko()));
+        holder.numerTel.setText(item.getNumerTelefonu());
+        holder.adresEmail.setText(item.getAdresEmail());
     }
 
     @Override
     public int getItemCount() {
-        return 0;
+        return dane.size();
     }
 
     public static class CityViewHolder extends RecyclerView.ViewHolder{
