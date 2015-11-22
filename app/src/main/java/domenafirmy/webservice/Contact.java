@@ -4,17 +4,17 @@ package domenafirmy.webservice;
  * Created by jawa on 22/11/2015.
  */
 public class Contact {
-    private long id;
+    private Long id;
     private String imie;
     private String nazwisko;
     private String numerTelefonu;
     private  String adresEmail;
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
