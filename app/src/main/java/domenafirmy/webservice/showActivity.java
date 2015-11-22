@@ -45,5 +45,15 @@ public class showActivity extends AppCompatActivity{
                 .setEndpoint("https://szkolenie-android-kontakty.appspot.com/_ah/api")
                 .setLogLevel(RestAdapter.LogLevel.FULL)
                 .build();
+
+        ContactWebService webService = adapter.create(ContactWebService.class);
+
+        //obj do wyslania na server
+        Contact contact = new Contact();
+        contact.setImie(pierwszeImie.getText().toString());
+        contact.setNazwisko(nazwisko.getText().toString());
+        contact.setNumerTelefonu(telefon.getText().toString());
+        contact.setAdresEmail(email.getText().toString());
+
     }
 }
