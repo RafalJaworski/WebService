@@ -14,8 +14,9 @@ public interface ContactWebService {
 
     //przekazujemy kontakt do domadnia
     //mowimy ze ten m=parametr ma byc przekazany jako tresc
+    //retrofit wykona to w sobnym watku
     @POST("/add")
-    public void addContact(@Body Contact contact);
+    public void addContact(@Body Contact contact,Callback<Void> callback);
 
     //webservice nie zwraca nam listy wiec piszemy klase do zwracania
     public static class ContactListResponse
