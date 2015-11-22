@@ -2,8 +2,10 @@ package domenafirmy.webservice;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.widget.Toast;
 
 import java.util.List;
 
@@ -17,7 +19,7 @@ import retrofit.client.Response;
 public class MainActivity extends AppCompatActivity {
 
     @Bind(R.id.lista_kontaktow)
-    private RecyclerView recyclerView;
+    protected RecyclerView recyclerView;
     //kliknij "adres bazowy webservice na clab.type
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         ButterKnife.bind(this);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         //budujemy obj dostarczajacy nam implementacje naszych interfacow
         RestAdapter adapter   = new RestAdapter.Builder()
@@ -38,11 +41,16 @@ public class MainActivity extends AppCompatActivity {
         webService.listcontact(new Callback<ContactWebService.ContactListResponse>() {
             @Override
             public void success(ContactWebService.ContactListResponse contactListResponse, Response response) {
+                contactAdapter listAdapter =
+                        new contactAdapter(MainActivity.this, contactListResponse.getItems());
+                recyclerView.setAdapter(listAdapter);
                 Log.d("webservice","Liczba kontaktow");
             }
 
             @Override
             public void failure(RetrofitError error) {
+                //MainActivity this bo this to jest callback teraz wiec musimy miec this z aktywnosci
+                Toast.makeText(MainActivity.this,"Błąd",Toast.LENGTH_SHORT).show();
                 Log.d("webservice","Liczba błą");
             }
         });

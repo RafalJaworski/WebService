@@ -11,6 +11,7 @@ import android.widget.TextView;
 import java.util.List;
 
 import butterknife.Bind;
+import butterknife.ButterKnife;
 
 public class contactAdapter extends RecyclerView.Adapter<contactAdapter.CityViewHolder>{
 
@@ -47,13 +48,14 @@ public class contactAdapter extends RecyclerView.Adapter<contactAdapter.CityView
     public static class CityViewHolder extends RecyclerView.ViewHolder{
 
         @Bind(R.id.imie_nazwisko)
-        private TextView imienazwisko;
+        protected TextView imienazwisko;
         @Bind(R.id.numer_telefonu)
-        private TextView numerTel;
+        protected TextView numerTel;
         @Bind(R.id.adres_email)
-        private TextView adresEmail;
+        protected TextView adresEmail;
         public CityViewHolder(View itemView) {
             super(itemView);
+            ButterKnife.bind(this,itemView);
         }
     }
 }
