@@ -8,6 +8,7 @@ import android.widget.EditText;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import retrofit.RestAdapter;
 
 public class showActivity extends AppCompatActivity{
 
@@ -34,5 +35,15 @@ public class showActivity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.show_activity);
         ButterKnife.bind(this);
+    }
+
+    @OnClick(R.id.zapisz)
+    public void onClick()
+    {
+        //budujemy obj dostarczajacy nam implementacje naszych interfacow
+        RestAdapter adapter   = new RestAdapter.Builder()
+                .setEndpoint("https://szkolenie-android-kontakty.appspot.com/_ah/api")
+                .setLogLevel(RestAdapter.LogLevel.FULL)
+                .build();
     }
 }

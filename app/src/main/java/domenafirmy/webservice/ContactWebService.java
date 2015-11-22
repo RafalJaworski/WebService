@@ -10,6 +10,8 @@ public interface ContactWebService {
     @GET("/list")
     public void listcontact (Callback<ContactListResponse> callback);
 
+    public void addContact();
+
     //webservice nie zwraca nam listy wiec piszemy klase do zwracania
     public static class ContactListResponse
     {
