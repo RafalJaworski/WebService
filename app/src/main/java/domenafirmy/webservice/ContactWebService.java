@@ -8,7 +8,7 @@ import retrofit.http.GET;
 
 public interface ContactWebService {
     @GET("/list")
-    public void listcontact (Callback<List<Contact>> callback);
+    public void listcontact (Callback<ContactListResponse> callback);
 
     //webservice nie zwraca nam listy wiec piszemy klase do zwracania
     public static class ContactListResponse

@@ -2,6 +2,7 @@ package domenafirmy.webservice;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 
 import java.util.List;
 
@@ -28,15 +29,15 @@ public class MainActivity extends AppCompatActivity {
         //z adaptera pobieramy implementacje concatcWebservice
         ContactWebService webService = adapter.create(ContactWebService.class);
 
-        webService.listcontact(new Callback<List<Contact>>() {
+        webService.listcontact(new Callback<ContactWebService.ContactListResponse>() {
             @Override
-            public void success(List<Contact> contacts, Response response) {
-
+            public void success(ContactWebService.ContactListResponse contactListResponse, Response response) {
+                Log.d("webservice","Liczba kontaktow");
             }
 
             @Override
             public void failure(RetrofitError error) {
-
+                Log.d("webservice","Liczba błą");
             }
         });
     }
