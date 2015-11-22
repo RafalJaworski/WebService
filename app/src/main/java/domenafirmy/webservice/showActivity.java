@@ -8,7 +8,10 @@ import android.widget.EditText;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import retrofit.Callback;
 import retrofit.RestAdapter;
+import retrofit.RetrofitError;
+import retrofit.client.Response;
 
 public class showActivity extends AppCompatActivity{
 
@@ -55,5 +58,17 @@ public class showActivity extends AppCompatActivity{
         contact.setNumerTelefonu(telefon.getText().toString());
         contact.setAdresEmail(email.getText().toString());
 
+        //wyslanie obiektu na server
+        webService.addContact(contact, new Callback<Void>() {
+            @Override
+            public void success(Void aVoid, Response response) {
+
+            }
+
+            @Override
+            public void failure(RetrofitError error) {
+
+            }
+        });
     }
 }
