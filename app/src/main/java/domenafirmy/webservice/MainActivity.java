@@ -2,10 +2,13 @@ package domenafirmy.webservice;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 
 import java.util.List;
 
+import butterknife.Bind;
+import butterknife.ButterKnife;
 import retrofit.Callback;
 import retrofit.RestAdapter;
 import retrofit.RetrofitError;
@@ -13,12 +16,15 @@ import retrofit.client.Response;
 
 public class MainActivity extends AppCompatActivity {
 
+    @Bind(R.id.lista_kontaktow)
+    private RecyclerView recyclerView;
     //kliknij "adres bazowy webservice na clab.type
     @Override
-
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        ButterKnife.bind(this);
 
         //budujemy obj dostarczajacy nam implementacje naszych interfacow
         RestAdapter adapter   = new RestAdapter.Builder()
