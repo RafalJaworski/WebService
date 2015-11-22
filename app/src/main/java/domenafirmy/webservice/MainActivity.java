@@ -31,7 +31,11 @@ public class MainActivity extends AppCompatActivity {
 
         ButterKnife.bind(this);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+    }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
         //budujemy obj dostarczajacy nam implementacje naszych interfacow
         RestAdapter adapter   = new RestAdapter.Builder()
                 .setEndpoint("https://szkolenie-android-kontakty.appspot.com/_ah/api")
@@ -47,14 +51,14 @@ public class MainActivity extends AppCompatActivity {
                 contactAdapter listAdapter =
                         new contactAdapter(MainActivity.this, contactListResponse.getItems());
                 recyclerView.setAdapter(listAdapter);
-                Log.d("webservice","Liczba kontaktow");
+                Log.d("webservice", "Liczba kontaktow");
             }
 
             @Override
             public void failure(RetrofitError error) {
                 //MainActivity this bo this to jest callback teraz wiec musimy miec this z aktywnosci
-                Toast.makeText(MainActivity.this,"Błąd",Toast.LENGTH_SHORT).show();
-                Log.d("webservice","Liczba błą");
+                Toast.makeText(MainActivity.this, "Błąd", Toast.LENGTH_SHORT).show();
+                Log.d("webservice", "Liczba błą");
             }
         });
     }
@@ -64,7 +68,6 @@ public class MainActivity extends AppCompatActivity {
         getMenuInflater().inflate(R.menu.main_menu,menu);
         return true;
     }
-
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if(item.getItemId() == R.id.open_form)

@@ -3,6 +3,7 @@ package domenafirmy.webservice;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -28,12 +29,6 @@ public class showActivity extends AppCompatActivity{
     @Bind(R.id.email)
     protected EditText email;
 
-    @OnClick(R.id.zapisz)
-    public void saveOnClick()
-    {
-
-    }
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,8 +37,11 @@ public class showActivity extends AppCompatActivity{
     }
 
     @OnClick(R.id.zapisz)
-    public void onClick()
+    public void onClick(final View v)
     {
+        //zabezpieczenie przed ponownym kliknienciem
+        v.setEnabled(false);
+
         //budujemy obj dostarczajacy nam implementacje naszych interfacow
         RestAdapter adapter   = new RestAdapter.Builder()
                 .setEndpoint("https://szkolenie-android-kontakty.appspot.com/_ah/api")
@@ -68,6 +66,7 @@ public class showActivity extends AppCompatActivity{
 
             @Override
             public void failure(RetrofitError error) {
+                v.setEnabled(true);
                 Toast.makeText(showActivity.this,"wystapił błąd",Toast.LENGTH_SHORT).show();
             }
         });
