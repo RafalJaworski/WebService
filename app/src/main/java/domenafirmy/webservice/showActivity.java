@@ -4,6 +4,7 @@ package domenafirmy.webservice;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -62,12 +63,12 @@ public class showActivity extends AppCompatActivity{
         webService.addContact(contact, new Callback<Void>() {
             @Override
             public void success(Void aVoid, Response response) {
-
+                finish();
             }
 
             @Override
             public void failure(RetrofitError error) {
-
+                Toast.makeText(showActivity.this,"wystapił błąd",Toast.LENGTH_SHORT).show();
             }
         });
     }
