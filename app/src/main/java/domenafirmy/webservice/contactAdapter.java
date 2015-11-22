@@ -1,7 +1,9 @@
 package domenafirmy.webservice;
 
 
+import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
@@ -15,6 +17,12 @@ import butterknife.Bind;
 public class contactAdapter extends RecyclerView.Adapter<contactAdapter.CityViewHolder>{
 
     private List<String> dane;
+    private LayoutInflater inflater;
+
+    public contactAdapter(Context context, List<String> dane) {
+        this.dane = dane;
+        this.inflater = (LayoutInflater) context.getSystemService(context.LAYOUT_INFLATER_SERVICE);
+    }
 
     @Override
     public CityViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
