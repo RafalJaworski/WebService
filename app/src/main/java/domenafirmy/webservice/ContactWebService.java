@@ -4,13 +4,18 @@ package domenafirmy.webservice;
 import java.util.List;
 
 import retrofit.Callback;
+import retrofit.http.Body;
 import retrofit.http.GET;
+import retrofit.http.POST;
 
 public interface ContactWebService {
     @GET("/list")
     public void listcontact (Callback<ContactListResponse> callback);
 
-    public void addContact();
+    //przekazujemy kontakt do domadnia
+    //mowimy ze ten m=parametr ma byc przekazany jako tresc
+    @POST("/add")
+    public void addContact(@Body Contact contact);
 
     //webservice nie zwraca nam listy wiec piszemy klase do zwracania
     public static class ContactListResponse
