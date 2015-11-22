@@ -12,16 +12,16 @@ import butterknife.OnClick;
 public class showActivity extends AppCompatActivity{
 
     @Bind(R.id.imie)
-    private EditText pierwszeImie;
+    protected EditText pierwszeImie;
 
     @Bind(R.id.nazwisko)
-    private EditText nazwisko;
+    protected EditText nazwisko;
 
     @Bind(R.id.telefon)
-    private EditText telefon;
+    protected EditText telefon;
 
     @Bind(R.id.email)
-    private EditText email;
+    protected EditText email;
 
     @OnClick(R.id.zapisz)
     public void saveOnClick()

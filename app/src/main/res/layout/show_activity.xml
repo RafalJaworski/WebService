@@ -8,26 +8,31 @@
     <EditText
         android:id="@+id/imie"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:hint="imie"/>
 
     <EditText
         android:id="@+id/nazwisko"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:hint="nazwisko"/>
 
     <EditText
         android:id="@+id/telefon"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:hint="imie"/>
 
     <EditText
         android:id="@+id/email"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:hint="email"/>
 
 
     <Button
         android:id="@+id/zapisz"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:text="Ok"/>
 </LinearLayout>
